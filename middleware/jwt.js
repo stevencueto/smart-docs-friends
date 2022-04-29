@@ -3,10 +3,12 @@ const handler = require('./serverError')
 
 module.exports = (req, res, next) => {
     const token = req.headers["x-access-token"]
+    console.log(req.headers)
     if(!token){
+        console.log(token)
         return handler("Token Must be provided", res ,"Token Must be provided" )
     }
-    jwt.verify(token, process.env.TOKEN_GENERATOR, function(err, decoded) {
+    jwt.verify(token, process.env.TOKEN_GENERATOR, (err, decoded)=> {
         if (err) {
             return handler(err?.message, res , err?.message)
         }else{

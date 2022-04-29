@@ -41,8 +41,11 @@ app.use(express.json())
 //require router
 
 const secureServer = require('./middleware/jwt')
+const friendsRouter = require('./controlers/friendsController')
+const microRouter = require('./controlers/MicroservicesController')
 app.use('/', secureServer)
-
+app.use('/friend', friendsRouter)
+app.use('/micro', microRouter)
 
 
 
