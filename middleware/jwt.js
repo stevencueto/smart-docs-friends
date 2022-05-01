@@ -3,7 +3,6 @@ const handler = require('./serverError')
 
 module.exports = (req, res, next) => {
     const token = req.headers["x-access-token"]
-    console.log(req.headers)
     if(!token){
         console.log(token)
         return handler("Token Must be provided", res ,"Token Must be provided" )

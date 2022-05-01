@@ -32,7 +32,7 @@ db.on('error', err => console.log(err.message + ' is Mongod not running?'))
 db.on('disconnected', () => console.log('mongo disconnected', mongoURI))
 
 
-app.use(morgan('dev'))
+app.use(morgan('short'))
 
 
 app.use(express.urlencoded({ extended: true }))

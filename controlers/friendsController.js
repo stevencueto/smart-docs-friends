@@ -34,14 +34,16 @@ router.get('/:id', async(req, res)=>{
 router.put('/:id', async(req, res)=>{
     try {
         const oldFriends =  await Friends.findById(req.params.id)
+        const newFriend = req.body.friend
         const otherFrineds = () =>{
             if(!oldFriends.friends.length) return false
-            let posMovie = false
-            const frid = oldFriends.friends
+            let posFriend = false
+            const allFriends = oldFriends.friends
             for(const friend of frid){
-                if(mongoose.Types.ObjectId(friend) === frid) return posMovie = true
+                console.log(frid, newFriend)
+                if(mongoose.Types.ObjectId(newFriend) === allFriends) return posFriend = true
             }
-            return posMovie
+            return posFriend
         }
         if(otherFrineds()) return catchErr("duplicate", res, "no new friends here")
         const data = await Friends.findByIdAndUpdate(
